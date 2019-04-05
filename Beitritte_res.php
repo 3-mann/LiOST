@@ -7,24 +7,33 @@
 		<h1>LiOST-Web: Beitritte der Mitglieder</h1>
 		<h3>...hier holen wir die Beitrittsdaten aus der MySQL Datenbank</h3>
 	<?php 
-		$db_link = mysqli_connect('localhost', 'combit','' ,'beitritte'); 
+		$db_link = mysqli_connect('217.160.13.141', 'combit','1.Kuriosum#88' ,'Beitritte'); 
 		$db_rc01 = mysqli_query($db_link,"Select * from beitritte")
 			or die("Fehler: ". mysqli_error($db_link));
-		while($row = mysqli_fetch_array($db_rc01))
+                $ausgabe = "<table>";
+                $z = 0;
+		while($row = mysqli_fetch_array($db_rc01 , MASQL_NUM))
 		{
-			echo('<tr>');
-			echo ('<td>' . $row['Kommentar'] . ' | /<td>');
-			echo ('<td>' . $row['Beitritt'] . ' | /<td>');
-			echo ('<td>' . $row['Beitrittsdatum'] . ' | /<td>');
-			echo ('<td>' . $row['Beitrittsende'] . ' | /<td>');
-			echo ('<td>' . $row['Vertrag'] . ' | /<td>');
-			echo ('<td>' . $row['Gruppe'] . ' | /<td>');
-			echo ('<td>' . $row['KK_Name'] . ' | /<td>');
-			echo ('<td>' . $row['KK_Ort'] . ' | /<td> </br>');
-			echo('</tr>');
-		}
+			$z ++;
+                        if ($z == 1)
+                        {
+                            $ausgabe .= "<tr>";
+                            for ($i=0;$i<=count($fetch)-1;$i++)
+                            {
+                                $ausgabe .= "<th>" . mysql_field_name($result,$i) . "</th>";
+                            }
+                            $ausgabe .= "</tr>";
+                        }
+                        $ausgabe .= "<tr>";
+                        for ($i=0; $i<=count($fetch)-1;$i++)
+                        {
+                            $ausgabe .= "<td>" . $fetch($i) . "</td>";
+                        }
+                        $ausgabe .= "<tr>";
+                }
+                $ausgabe .= "</table>";
+                echo $ausgabe;
 	?>	
 	</div>
 </body>
 </html>
-
