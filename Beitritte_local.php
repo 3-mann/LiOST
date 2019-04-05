@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link href="CSS/TableStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<title> LiOST-Web: Anzeige der Beitritte </title>
@@ -17,19 +18,19 @@
 			$z ++;
                         if ($z == 1)
                         {
-                            $ausgabe .= "<tr>";
+                            $ausgabe .= "<thead><tr>";
                             for ($i=0;$i<=count($fetch)-1;$i++)
                             {
                                 $ausgabe .= "<th>" . mysqli_fetch_field_direct($result,$i)->name . "</th>";
                             }
-                            $ausgabe .= "</tr>";
+                            $ausgabe .= "</tr></thead>";
                         }
-                        $ausgabe .= "<tr>";
+                        $ausgabe .= "<tfoot><tr>";
                         for ($i=0; $i<=count($fetch)-1;$i++)
                         {
                             $ausgabe .= "<td>" . $fetch[$i] . "</td>";
                         }
-                        $ausgabe .= "<tr>";
+                        $ausgabe .= "</tr></tfoot>";
                 }
                 $ausgabe .= "</table>";
                 echo $ausgabe;
