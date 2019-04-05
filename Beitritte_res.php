@@ -1,5 +1,6 @@
 <html>
 <head>
+        <link href="CSS/TableStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<title> LiOST-Web: Anzeige der Beitritte </title>
