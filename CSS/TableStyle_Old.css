@@ -12,6 +12,25 @@ and open the template in the editor.
 td:empty{
   box-shadow: inset 1px 3px 5px -3px rgba(0,0,0,0.5);
 }
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border:none;
+  border-radius: 0;
+  font-size: 1em;
+  width: 100%
+} 
+
+/* graceful degradation for ie8 */
+input[type='checkbox'],
+input[type='radio'] {
+  width:auto;
+  float:left;
+  margin-right: .75em;
+  background:transparent;
+  border:none;
+}
 
 input[type='checkbox']:checked,
 input[type='checkbox']:not(:checked),
@@ -19,6 +38,7 @@ input[type='radio']:checked,
 input[type='radio']:not(:checked) {
   background: transparent;
   position: relative;
+  visibility: hidden;
   margin:0;
   padding:0;
 }

@@ -8,7 +8,7 @@
 		<h1>LiOST-Web: Beitritte der Mitglieder</h1>
 		<h3>...hier holen wir die Beitrittsdaten aus der MySQL Datenbank</h3>
 	<?php 
-		$db_link = mysqli_connect('localhost', 'LiOST_Admin','1.Kuriosum#88' ,'Beitritte'); 
+		$db_link = mysqli_connect('localhost', 'LiOST_Admin','' ,'Beitritte'); 
 		$result = mysqli_query($db_link,"Select * from beitritte")
 			or die("Fehler: ". mysqli_error($db_link));
                 $ausgabe = "<table>";
@@ -18,19 +18,19 @@
 			$z ++;
                         if ($z == 1)
                         {
-                            $ausgabe .= "<thead><tr>";
+                            $ausgabe .= "<tr>";
                             for ($i=0;$i<=count($fetch)-1;$i++)
                             {
                                 $ausgabe .= "<th>" . mysqli_fetch_field_direct($result,$i)->name . "</th>";
                             }
-                            $ausgabe .= "</tr></thead>";
+                            $ausgabe .= "</tr>";
                         }
-                        $ausgabe .= "<tfoot><tr>";
+                        $ausgabe .= "<tr>";
                         for ($i=0; $i<=count($fetch)-1;$i++)
                         {
                             $ausgabe .= "<td>" . $fetch[$i] . "</td>";
                         }
-                        $ausgabe .= "</tr></tfoot>";
+                        $ausgabe .= "</tr>";
                 }
                 $ausgabe .= "</table>";
                 echo $ausgabe;
