@@ -11,7 +11,7 @@
 		<h1>LiOST-Web: Beitritte der Mitglieder</h1>
 		<h3>...hier holen wir die Beitrittsdaten aus der MySQL Datenbank</h3>
 	<?php 
-		$db_link = mysqli_connect('localhost', 'combit','' ,'Beitritte'); 
+		$db_link = mysqli_connect('localhost', 'combit','1.Kuriosum#88' ,'Beitritte'); 
 		$result = mysqli_query($db_link,"Select * from beitritte")
 			or die("Fehler: ". mysqli_error($db_link));
                 $ausgabe = "<table>";

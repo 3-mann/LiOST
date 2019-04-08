@@ -1,6 +1,9 @@
 <html>
 <head>
-        <link href="CSS/TableStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="CSS/TableStyle.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8">
+    <meta name=description content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<title> LiOST-Web: Anzeige der Beitritte </title>
@@ -18,17 +21,30 @@
 			$z ++;
                         if ($z == 1)
                         {
+                            $fieldName = "";
                             $ausgabe .= "<tr>";
                             for ($i=0;$i<=count($fetch)-1;$i++)
-                            {
-                                $ausgabe .= "<th>" . mysqli_fetch_field_direct($result,$i)->name . "</th>";
+                            {   
+                                $fieldName = mysqli_fetch_field_direct($result,$i)->name;
+                                IF( $fieldName == "Beitritt" )
+                                {
+                                    $inputCol = $z+1;
+                                }
+                                $ausgabe .= "<th>" . $fieldName . "</th>";
                             }
                             $ausgabe .= "</tr>";
                         }
                         $ausgabe .= "<tr>";
                         for ($i=0; $i<=count($fetch)-1;$i++)
                         {
+                            IF ($i == $inputCol)
+                            {
+                            $ausgabe .= '<td>' . '<input type="checkbox" Value = ' . TRUE . '></td>';
+                            }
+                            IF ($i !== $inputCol)
+                            {
                             $ausgabe .= "<td>" . $fetch[$i] . "</td>";
+                            }
                         }
                         $ausgabe .= "</tr>";
                 }
